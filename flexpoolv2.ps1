@@ -10,7 +10,7 @@
     }
     else {}
     }
- #call fucntion to make new dir for flexpool data
+ #call function to make new dir for flexpool data
  make_dir
 
 #Change The Miner names here, EG $MinerWorker1 = "SomeGreatMinerName" add more workers if needed
@@ -93,13 +93,13 @@
 
        Write-Host "DAILY DATA" -ForegroundColor Black -BackgroundColor Green
        [PSCustomObject] $data1
-       [PSCustomObject] $data1 | Export-Csv C:\temp\flexpool\daily-$date_day-$R.csv -NoTypeInformation -force -Append
+       [PSCustomObject] $data1 | Export-Csv C:\temp\flexpool_data\daily-$date_day-$R.csv -NoTypeInformation -force -Append
   
        Write-Host "CURRENT DATA" -ForegroundColor Black -BackgroundColor RED
        [PSCustomObject] $data2
-       [PSCustomObject] $data2 | Export-Csv C:\temp\flexpool\current-$date_day-$R.csv -NoTypeInformation -force -Append
+       [PSCustomObject] $data2 | Export-Csv C:\temp\flexpool_data\urrent-$date_day-$R.csv -NoTypeInformation -force -Append
        [PSCustomObject] $data3
-       [PSCustomObject] $data3 | Export-Csv C:\temp\flexpool\ballance-$date_day-$R.csv -NoTypeInformation -force -Append
+       [PSCustomObject] $data3 | Export-Csv C:\temp\flexpool_data\ballance-$date_day-$R.csv -NoTypeInformation -force -Append
        start-sleep -seconds $sleep_time
 
     }
