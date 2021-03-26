@@ -1,4 +1,4 @@
-﻿#PS Script to pull Flexpool.io API data
+#PS Script to pull Flexpool.io API data
 
    
    #Change The Miner names here, EG $MinerWorker1 = "SomeGreatMinerName" add more workers if needed
@@ -10,7 +10,7 @@
     }
     else {}
     }
- #call function to make new dir for flexpool data
+ #call fucntion to make new dir for flexpool data
  make_dir
 
 #Change The Miner names here, EG $MinerWorker1 = "SomeGreatMinerName" add more workers if needed
@@ -43,9 +43,9 @@
        $date = (get-date).DateTime
 
        #Return daily effective, and current reported hashrate
-       $minerdatadaily = (Invoke-RestMethod -Method 'get' -Uri $UrlDaily) 
+       $minerdatadaily = (Invoke-RestMethod -Method 'get' -Uri https://flexpool.io/api/v1/miner/$addy/daily) 
        #current pool luck
-       $luck = (Invoke-RestMethod -Method 'get' -Uri $UrlLuck)
+       $luck = (Invoke-RestMethod -Method 'get' -Uri https://flexpool.io/api/v1/pool/currentLuck)
    
        #Returns current effective, and current reported hashrate
        #This is ther area you would change to add OR remove workers!!!!
@@ -97,7 +97,7 @@
   
        Write-Host "CURRENT DATA" -ForegroundColor Black -BackgroundColor RED
        [PSCustomObject] $data2
-       [PSCustomObject] $data2 | Export-Csv C:\temp\flexpool_data\urrent-$date_day-$R.csv -NoTypeInformation -force -Append
+       [PSCustomObject] $data2 | Export-Csv C:\temp\flexpool_data\current-$date_day-$R.csv -NoTypeInformation -force -Append
        [PSCustomObject] $data3
        [PSCustomObject] $data3 | Export-Csv C:\temp\flexpool_data\ballance-$date_day-$R.csv -NoTypeInformation -force -Append
        start-sleep -seconds $sleep_time
